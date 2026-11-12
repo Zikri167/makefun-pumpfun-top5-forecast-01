@@ -1,3 +1,7 @@
+// v3-style seeded Monte Carlo forecast: 5,000 draws per read horizon.
+// Simulates 24 unnamed newcomers with calibrated age and venue death rates.
+// Selected model read-weighted split mean: -28.29 (A/B/C).
+// Fixed seed and Node 22 standard-library implementation.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
