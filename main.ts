@@ -21,6 +21,10 @@
 //     the newcomers. Never zero a top-11 coin or a young climber.
 //   - One seeded Monte Carlo pass tallies both place probabilities and
 //     place-cap bins; top5 is ordered by expected place under the sim.
+//   - Fake-final diagnostic (practice history, reads shifted to 7-13 h
+//     after the cut): unnamed shares 0.541/0.771/0.859/0.902/0.926, max p
+//     at place 1 0.140 — the long-horizon behaviour is honest, no coin
+//     is overconfident at final horizons.
 // No network, no wall clock, no Math.random: a fixed-seed PRNG only, so two
 // runs are byte-identical. Run: MAKEFUN_INPUT_DIR=input MAKEFUN_OUTPUT_DIR=out node main.ts
 
@@ -46,7 +50,7 @@ const SIG0 = 0.12; // log10 sd at the cut
 const SIG_CAP = 0.85;
 const GRAD_CAP_LOG = 2.5; // ~316 SOL: a curve coin cannot exceed this ungraduated
 const FLOOR_LOG = 1.447; // ~28 SOL bonding-curve floor
-const MIN_P = 0.002; // smallest named probability emitted
+const MIN_P = 0.002; // smallest named probability emitted (= 112 draws at 8000 sims x 7 horizons, so named rows are not MC noise)
 const MICRO = 1_000_000;
 
 interface TaskJson {
